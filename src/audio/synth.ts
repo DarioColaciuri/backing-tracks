@@ -1,23 +1,34 @@
 import * as Tone from 'tone';
 
 export function createChordSynth(): Tone.PolySynth {
-  const filter = new Tone.Filter(1800, 'lowpass');
-  const reverb = new Tone.Reverb({ decay: 2.0, wet: 0.25 });
+  const filter = new Tone.Filter(2500, 'lowpass');
+  const reverb = new Tone.Reverb({ decay: 2.5, wet: 0.3 });
   filter.connect(reverb);
   reverb.toDestination();
 
-  const synth = new Tone.PolySynth(Tone.Synth, {
+  const synth = new Tone.PolySynth(Tone.FMSynth, {
+    harmonicity: 3,
+    modulationIndex: 12,
     oscillator: {
-      type: 'triangle',
+      type: 'sine',
     },
     envelope: {
-      attack: 0.003,
-      decay: 0.8,
-      sustain: 0.2,
-      release: 1.4,
+      attack: 0.001,
+      decay: 1.8,
+      sustain: 0.02,
+      release: 2.2,
     },
-    volume: -6,
-  });
+    modulation: {
+      type: 'sine',
+    },
+    modulationEnvelope: {
+      attack: 0.001,
+      decay: 0.6,
+      sustain: 0,
+      release: 0.3,
+    },
+    volume: -5,
+  } as any);
   synth.connect(filter);
   synth.maxPolyphony = 32;
   return synth;
@@ -32,15 +43,26 @@ export function createTickSynth(): Tone.Synth {
 }
 
 export function createPreviewSynth(): Tone.PolySynth {
-  const reverb = new Tone.Reverb({ decay: 1.0, wet: 0.2 });
-  reverb.toDestination();
-
-  const synth = new Tone.PolySynth(Tone.Synth, {
-    oscillator: { type: 'triangle' },
-    envelope: { attack: 0.01, decay: 0.4, sustain: 0.15, release: 0.6 },
+  const synth = new Tone.PolySynth(Tone.FMSynth, {
+    harmonicity: 3,
+    modulationIndex: 8,
+    oscillator: { type: 'sine' },
+    envelope: {
+      attack: 0.002,
+      decay: 0.6,
+      sustain: 0.01,
+      release: 0.8,
+    },
+    modulation: { type: 'sine' },
+    modulationEnvelope: {
+      attack: 0.001,
+      decay: 0.3,
+      sustain: 0,
+      release: 0.2,
+    },
     volume: -10,
-  });
-  synth.connect(reverb);
+  } as any);
   synth.maxPolyphony = 16;
+  synth.toDestination();
   return synth;
 }
