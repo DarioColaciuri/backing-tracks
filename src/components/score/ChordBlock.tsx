@@ -3,6 +3,7 @@ import type { ChordBlock } from '../../types/music';
 import { chordToSymbol } from '../../theory/symbols';
 import { getDurationFraction } from '../../utils/music';
 import { useStore } from '../../state/store';
+import { previewChordArpeggiated } from '../../audio/preview';
 import { NoteIcon } from './NoteIcon';
 import styles from './ChordBlock.module.css';
 
@@ -29,11 +30,12 @@ export function ChordBlockItem({ block, index, measureId }: ChordBlockItemProps)
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     selectBlock(measureId, block.id);
+    previewChordArpeggiated(block.chord);
   };
 
   let suffix = '';
-  if (block.dotted) suffix += '·';
-  if (block.triplet) suffix += '³';
+  if (block.dotted) suffix += '\xB7';
+  if (block.triplet) suffix += '\xB3';
 
   return (
     <div

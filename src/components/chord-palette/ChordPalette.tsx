@@ -1,5 +1,7 @@
+import { useEffect, useRef } from 'react';
 import { useStore } from '../../state/store';
 import { selectCurrentChordSymbol, selectCanAddChord } from '../../state/selectors';
+import { previewChordArpeggiated } from '../../audio/preview';
 import { ChordChip } from './ChordChip';
 import styles from './ChordPalette.module.css';
 
@@ -8,6 +10,19 @@ export function ChordPalette() {
   const selectedChordType = useStore((s) => s.selectedChordType);
   const chordSymbol = useStore(selectCurrentChordSymbol);
   const canAddChord = useStore(selectCanAddChord);
+
+  const prevRoot = useRef(selectedRoot);
+  const prevType = useRef(selectedChordType);
+
+  useEffect(() => {
+    if (selectedRoot && selectedChordType) {
+      if (selectedRoot !== prevRoot.current || selectedChordType !== prevType.current) {
+        previewChordArpeggiated({ root: selectedRoot, type: selectedChordType });
+      }
+    }
+    prevRoot.current = selectedRoot;
+    prevType.current = selectedChordType;
+  }, [selectedRoot, selectedChordType]);
 
   return (
     <div className={styles.palette}>
