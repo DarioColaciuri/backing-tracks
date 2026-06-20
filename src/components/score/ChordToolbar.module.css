@@ -1,0 +1,149 @@
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  flex-shrink: 0;
+  min-height: 38px;
+}
+
+.symbol {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-text-bright);
+  font-family: var(--font-mono);
+  min-width: 48px;
+}
+
+.divider {
+  width: 1px;
+  height: 20px;
+  background: var(--color-border);
+}
+
+.label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.durations {
+  display: flex;
+  gap: 2px;
+}
+
+.durBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 6px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+.durBtn:hover {
+  background: var(--color-surface-hover);
+  color: var(--color-text);
+  border-color: var(--color-border-light);
+}
+
+.durBtn.durActive {
+  background: var(--color-primary);
+  color: var(--color-text-bright);
+  border-color: var(--color-primary);
+}
+
+.durBtn.durDisabled {
+  opacity: 0.35;
+  background: rgba(220, 80, 60, 0.12);
+  border-color: rgba(220, 80, 60, 0.25);
+  color: rgba(220, 80, 60, 0.5);
+  cursor: not-allowed;
+}
+
+.durBtn.durDisabled:hover {
+  background: rgba(220, 80, 60, 0.12);
+  color: rgba(220, 80, 60, 0.5);
+}
+
+.actionBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+.actionBtn:hover {
+  background: var(--color-surface-hover);
+  color: var(--color-text);
+}
+
+.deleteBtn:hover {
+  background: rgba(225, 112, 85, 0.15);
+  color: var(--color-stop);
+  border-color: var(--color-stop);
+}
+
+.modBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+.modBtn:hover {
+  background: var(--color-surface-hover);
+  color: var(--color-text);
+  border-color: var(--color-border-light);
+}
+
+.modBtn.modActive {
+  background: var(--color-primary);
+  color: var(--color-text-bright);
+  border-color: var(--color-primary);
+}
+
+.modBtn.modDisabled {
+  opacity: 0.35;
+  background: rgba(220, 80, 60, 0.12);
+  border-color: rgba(220, 80, 60, 0.25);
+  color: rgba(220, 80, 60, 0.5);
+  cursor: not-allowed;
+}
+
+.modBtn.modDisabled:hover {
+  background: rgba(220, 80, 60, 0.12);
+  color: rgba(220, 80, 60, 0.5);
+}
+
+.modIcon {
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 1;
+}
+
+.modLabel {
+  font-weight: 500;
+}

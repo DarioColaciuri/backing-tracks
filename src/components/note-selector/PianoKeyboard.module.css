@@ -1,0 +1,117 @@
+.keyboard {
+  position: relative;
+  height: 110px;
+  user-select: none;
+}
+
+.whiteKeys {
+  display: flex;
+  height: 100%;
+}
+
+.whiteKey {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 8px;
+  background: var(--color-white-key);
+  border: 1px solid #ccc;
+  border-radius: 0 0 4px 4px;
+  cursor: pointer;
+  transition: background 0.1s;
+  position: relative;
+}
+
+.whiteKey:hover {
+  background: var(--color-white-key-hover);
+}
+
+.whiteKey.selected {
+  background: var(--color-white-key-active);
+}
+
+.keyLabel {
+  font-size: 11px;
+  font-weight: 600;
+  color: #666;
+  pointer-events: none;
+}
+
+.whiteKey.selected .keyLabel {
+  color: var(--color-primary);
+}
+
+.blackKeys {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 65%;
+  pointer-events: none;
+}
+
+.blackKeyContainer {
+  position: absolute;
+  width: 14%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  pointer-events: auto;
+}
+
+.blackKey {
+  width: 70%;
+  height: 100%;
+  background: var(--color-black-key);
+  border-radius: 0 0 3px 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  cursor: pointer;
+  transition: background 0.1s;
+  position: relative;
+  border: 1px solid #000;
+  border-top: none;
+}
+
+.blackKey:hover {
+  background: var(--color-black-key-hover);
+}
+
+.blackKey.selected {
+  background: var(--color-black-key-active);
+}
+
+.enharmonicBtn {
+  padding: 1px 4px;
+  font-size: 9px;
+  font-weight: 600;
+  border-radius: 2px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.1s;
+  line-height: 1;
+}
+
+.enharmonicBtn.sharp {
+  background: transparent;
+  color: #bbb;
+}
+
+.enharmonicBtn.flat {
+  background: transparent;
+  color: #999;
+}
+
+.enharmonicBtn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+.enharmonicBtn.activeLabel {
+  background: var(--color-primary);
+  color: #fff;
+}
