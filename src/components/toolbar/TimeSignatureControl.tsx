@@ -29,6 +29,7 @@ export function TimeSignatureControl() {
         const ts = TIME_SIGNATURES.find((t) => t.value === value)?.ts;
         if (ts) setTimeSignature(ts);
       }}
+      disabled
     />
   );
 }

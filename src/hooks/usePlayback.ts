@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useStore } from '../state/store';
 import { playbackEngine } from '../audio/engine';
 
@@ -12,6 +12,10 @@ export function usePlayback() {
     metronomeEnabled,
     setPlaybackPosition,
   } = useStore();
+
+  useEffect(() => {
+    playbackEngine.setTempo(tempo);
+  }, [tempo]);
 
   const play = useCallback(async () => {
     if (measures.length === 0) return;
